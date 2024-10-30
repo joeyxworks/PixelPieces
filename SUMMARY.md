@@ -4,7 +4,7 @@
 
 ## Network Automation
 
-* [🤖 Network Automation (IaC) with CI/CD Tools](network-automation/network-automation-with-cicd-tools.md)
+* [Network Automation (IaC) with CI/CD Tools](network-automation/network-automation-with-cicd-tools.md)
 
 ## Network Security
 

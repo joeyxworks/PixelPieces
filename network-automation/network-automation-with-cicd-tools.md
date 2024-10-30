@@ -1,4 +1,4 @@
-# ⚙️ Network Automation (IaC) with CI/CD Tools
+# Network Automation (IaC) with CI/CD Tools
 
 ## What is CI/CD and why?
 
