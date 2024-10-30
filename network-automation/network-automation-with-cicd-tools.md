@@ -1,25 +1,23 @@
-# Network Automation (IaC) with CI/CD Tools
-
-# 0x01 What is CI/CD and why?
+# What is CI/CD and why?
 
 Before we dive deeper into CI/CD tools, we need to know CI/CD, what is CI/CD. According to the [definition](https://www.redhat.com/en/topics/devops/what-is-ci-cd) by RedHat, CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. 
 
 But wait, you may ask what it can do for network tasks, for the job each network engineer may face every day? As a network engineer, sometimes we have to repeat a job many times, which costs countless time we never realized. In the world of Network Automation, the target is to leave tasks as many as possible to the program, the only thing we should focus on is what the program unable to do. This article will show you how to use [**Jenkins**](https://www.jenkins.io/) and [**Ansible**](https://www.ansible.com/) to automate the task that add new ACL to a Cisco firewall.
 
-# 0x02 Getting Started
+# Getting Started
 
 ## Prerequisites
 
 - Operating System
-    
+  
     The demonstration below uses **RHEL** as operating system for both Jenkins and Ansible instances, you can choose other distributions if you don’t have RHEL license. 
     
 - Jenkins Controller
-    
+  
     The module of Jenkins we will use can be covered by the default settings after installation, so in this article, the detailed steps for the installation of the Jenkins controller will not be shown, you can click on this [link](https://jenkins.io/doc/book/installing/linux/) for reference.
     
 - Cisco Firewall
-    
+  
     Because the device we are going to integrate with Ansible is Cisco firewall, the ASA, you should have the basic knowledge about it and its configuration as well, click on the [link](https://www.cisco.com/c/en/us/support/security/adaptive-security-appliance-asa-software/products-installation-and-configuration-guides-list.html) for reference.
     
 
@@ -32,7 +30,7 @@ For some errors happened in the following the steps in this article may be cause
 - Ansible [core 2.12.2]
 - Cisco ASA 9.8(4)15
 
-# 0x03 Stages
+# Stages
 
 ### Basic Setting@Jenkins Agent Node
 
@@ -58,11 +56,11 @@ In this example, we will use SSH public key to handle the SSH connection with Je
 ssh-copy-id -i </path/to/your/public_key> <jenkins_user>@<target_agent_host>
 ```
 
-![Screen_Shot_2022-10-31_at_10_59_26.png](Screen_Shot_2022-10-31_at_10_59_26.png)
+![Public Key Authentication](network-automation-with-cicd-tools/Screen_Shot_2022-10-31_at_10_59_26.png)
 
 Another thing you should keep in mind about SSH connection is to set the default crypto policy to SHA1 because the version of Cisco ASA we are going to integrate is too low to make SSH connection from RHEL 7+.
 
-![Screen Shot 2022-11-03 at 16.28.58.png](Screen_Shot_2022-11-03_at_16.28.58.png)
+![SSH Crypto Policy Issue](network-automation-with-cicd-tools/Screen_Shot_2022-11-03_at_16.28.58.png)
 
 [SSH from RHEL 9 to RHEL 6 systems does not work - Red Hat Customer Portal](https://access.redhat.com/solutions/6816771)
 
@@ -105,7 +103,7 @@ The version of JDK we’ll use in Jenkins controller is **Java 11**, so we have 
 yum --showduplicates list java-11-openjdk
 ```
 
-![Screen_Shot_2022-11-03_at_16_14_40-2.png](Screen_Shot_2022-11-03_at_16_14_40-2.png)
+![Java 11 SDK](network-automation-with-cicd-tools/Screen_Shot_2022-11-03_at_16_14_40-2.png)
 
 Use the following commands to install and check if the JAVA JDK is successfully installed.
 
@@ -138,15 +136,15 @@ Some of the settings during the node registration you should take care of are `R
 - The first one should be filled with home directory of the user account which we created in previous section and will be used to execute the Ansible commands, such as ansible-playbook.
 - The value of the second one is the key you should fill in when you perform whatever  the commands or pipelines on Jenkins portal. Each node joined in should be configured with a unique label to precisely identify. For example, if I only want to execute a test pipeline in a test node, I should specify the label of that test node in the execution.
 
-![Screen_Shot_2022-11-03_at_16_16_06-2.png](Screen_Shot_2022-11-03_at_16_16_06-2.png)
+![Jenkin Config](network-automation-with-cicd-tools/Screen_Shot_2022-11-03_at_16_16_06-2.png)
 
-![Screen_Shot_2022-11-03_at_16_16_16-2.png](Screen_Shot_2022-11-03_at_16_16_16-2.png)
+![Jenkins Config](network-automation-with-cicd-tools/Screen_Shot_2022-11-03_at_16_16_16-2.png)
 
 After the agent node comes online, we can use Jenkins portal to complete the ACL creation task for us. In this case, we will write a Jenkins pipeline to arrange all the commands, configurations and variables together those we would like to ask the program to do instead of ad hoc commands in node’s shell.
 
 Click on the **New Item** button in the dashboard and choose pipeline as the way we want Jenkins works for us, then we can fill in the pipeline configurations (see the example in *Commands and Pipeline* section for reference) and run the job, finally we can see the job successfully completed.
 
-# 0x04 Commands and Pipeline
+# Commands and Pipeline
 
 ```bash
 # Network interface configuration using *nmcli*
