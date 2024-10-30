@@ -1,4 +1,6 @@
-# GlobalProtect VPN Authentication with Azure AD
+---
+icon: 👤
+---
 
 # Summary
 

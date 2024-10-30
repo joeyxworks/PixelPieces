@@ -1,3 +1,7 @@
+---
+icon: 🤖
+---
+
 # What is CI/CD and why?
 
 Before we dive deeper into CI/CD tools, we need to know CI/CD, what is CI/CD. According to the [definition](https://www.redhat.com/en/topics/devops/what-is-ci-cd) by RedHat, CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. 

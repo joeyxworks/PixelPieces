@@ -1,3 +1,7 @@
+---
+icon: 🤐
+---
+
 # Background
 
 Manually blocking some repetitive network attacks is quite a headache. Tag, on Palo Alto firewall can be used to dynamically block high threat IP addresses. Let's take a look how to achieve that.
