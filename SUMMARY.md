@@ -15,3 +15,7 @@
 * [Interactive blocks](basics/interactive-blocks.md)
 * [OpenAPI](basics/openapi.md)
 * [Integrations](basics/integrations.md)
+
+## Network Automation
+
+* [Network Automation (IaC) with CI/CD Tools](network-automation/network-automation-with-cicd-tools.md)
