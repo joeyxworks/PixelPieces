@@ -9,3 +9,4 @@
 ## Network Security
 
 * [Palo Alto Firewall Tag-based Automatic Blocking Policy](network-security/palo-alto-firewall-tag-based-automatic-blocking-policy.md)
+* [GlobalProtect VPN Authentication with Azure AD](network-security/globalprotect-vpn-authentication-with-azure-ad.md)
