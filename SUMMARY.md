@@ -4,9 +4,9 @@
 
 ## Network Automation
 
-* [⚙️ Network Automation (IaC) with CI/CD Tools](network-automation/network-automation-with-cicd-tools.md)
+* [🤖 Network Automation (IaC) with CI/CD Tools](network-automation/network-automation-with-cicd-tools.md)
 
 ## Network Security
 
-* [Palo Alto Firewall Tag-based Automatic Blocking Policy](network-security/palo-alto-firewall-tag-based-automatic-blocking-policy.md)
-* [GlobalProtect VPN Authentication with Azure AD](network-security/globalprotect-vpn-authentication-with-azure-ad.md)
+* [🤐 Palo Alto Firewall Tag-based Automatic Blocking Policy](network-security/palo-alto-firewall-tag-based-automatic-blocking-policy.md)
+* [👤 GlobalProtect VPN Authentication with Azure AD](network-security/globalprotect-vpn-authentication-with-azure-ad.md)

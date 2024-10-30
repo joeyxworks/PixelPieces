@@ -1,7 +1,3 @@
----
-icon: 👤
----
-
 # Summary
 
 This instruction aims to walk through the whole configuration of authentication with Azure Active Directory for Palo Alto GlobalProtect remote VPN solution.
